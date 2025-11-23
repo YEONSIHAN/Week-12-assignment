@@ -1,0 +1,139 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()//sort 사용 후 오름차순
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+	sort(v.begin(), v.end());
+	
+	for (int n : v)
+		cout << n << " ";
+
+}
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+using namespace std;
+
+int main()// greater은 앞에서부터 큰 수가 오게 정렬 내림차순
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+	sort(v.begin(), v.end(), greater<int>());
+	for (int n : v) { 
+		cout << n << " ";
+	}
+
+
+
+}
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+using namespace std;
+
+int main()
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+	sort(v.end(),v.begin());// 반대로 하면 에러가 뜨는데 코드에선 정상이라고 보임.
+	for (int n : v) { 
+		cout << n << " ";
+	}
+
+
+
+}
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+//최대 값과 최소값 찾는 방법
+
+int main()
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+
+	auto maxIt = max_element(v.begin(), v.end());
+	auto minIt = min_element(v.begin(), v.end());
+
+	cout << "최대값:" << *maxIt << endl;
+	cout << "최소값:" << *minIt << endl;
+}
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+// 백터에 저장된 값을 반대로 출력하는 방법
+int main()
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+	reverse(v.begin(), v.end());
+
+	for (int num : v)
+	{
+		cout << num << " ";
+	}
+	
+}
+
+#include <iostream>
+#include <vector>
+using namespace std;
+//백터 안에 7이 있다면 index를 출력하고 없다면 Error를  띄우는 코드작성.
+int main()
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+
+	int target = 7;
+
+	auto it = find(v.begin(), v.end(), target);
+
+	if(it != v.end())
+	{
+		cout << "Index" << endl;
+	}
+	else
+	{
+		cout << "Error" << endl;
+	}
+
+}
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()//c에서 쓰는 방법 오름차순
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+	qsort(&v[0], v.size(), sizeof(int), [](const void* a, const void* b) {
+		return (*(int*)a - *(int*)b);
+		});	
+	for (int n : v) {
+		cout << n << ' ';
+	}
+
+}
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()//c에서 쓰는 방법 내림차순
+{
+	vector<int> v = { 4, 1, 7, 3, 9 };
+	qsort(&v[0], v.size(), sizeof(int), [](const void* a, const void* b) {
+		return (*(int*)b - *(int*)a);
+		});	
+	for (int n : v) {
+		cout << n << ' ';
+	}
+
+}
